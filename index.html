@@ -5,38 +5,47 @@
 <meta name="author" content="智能社 - zhinengshe.com" />
 <meta name="copyright" content="智能社 - zhinengshe.com" />
 <title>智能社 - www.zhinengshe.com</title>
-<style>
-#div1 .active{ background:yellow;}
-#div1 div{ display:none;width:200px; height:200px; background:#ccc;}
-</style>
 <script>
+function addZero(n){
+	if(n < 10){
+		return "0" + n;
+	} else {
+		return "" + n;
+	}
+}
+
+
 window.onload = function(){
-	var oDiv = document.getElementById("div1");
-	var aBtn = document.getElementsByTagName("input");
-	var aDiv = oDiv.getElementsByTagName("div");
+	var oText = document.getElementById("txt1");
+	var oBtn  = document.getElementById("btn1");
+	var oBtn2  = document.getElementById("btn2");
 	
-	
-	var iNow = 0;
-	for(var i = 0; i < aBtn.length; i++){
-		aBtn[i].index = i;
-		aBtn[i].onclick = function(){
-			iNow = this.index;
-			tab();
-		};
-	}
-	
-	function tab(){
+	var i = 0;
+	var timer = null;
+	//变量控制
+	var bClick = false;//默认没有被点击
+	oBtn.onclick = function(){
 		
-		document.title = iNow;
-		
-		for(var i = 0; i < aBtn.length; i++){
-			aBtn[i].className = "";
-			aDiv[i].style.display = "none";	
-		}	
-		aBtn[iNow].className = "active";
-		aDiv[iNow].style.display = "block";	
-	}
+		if(bClick == true){//被点击了
+			return ;
+		}
 	
+		bClick = true;
+		//clearInterval(timer);
+		timer = setInterval(function(){
+			//修改oText值
+			i++;	
+			var iM = parseInt(i/60);
+			var iS = i%60;
+			oText.value = addZero(iM) + ":" + addZero(iS);
+		},1000);	
+	};
+	
+	//暂停
+	oBtn2.onclick = function(){
+		bClick = false;
+		clearInterval(timer);
+	};
 	
  
 };
@@ -44,15 +53,10 @@ window.onload = function(){
 </head>
 
 <body>
-<div id="div1">
-	<input class="active" type="button" value="aaa"/>
-	<input type="button" value="bbb"/>
-	<input type="button" value="ccc"/>
-    <div style="display:block;">aaaa</div>
-    <div>bbbb</div>
-    <div>cccc</div>
-</div>
 
+<input id="txt1" type="text" value="00:00" />
+<input id="btn1" type="button" value="计时" />
+<input id="btn2" type="button" value="暂停" />
 
 </body>
 </html>
