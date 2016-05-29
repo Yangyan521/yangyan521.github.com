@@ -2,61 +2,524 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="author" content="智能社 - zhinengshe.com" />
-<meta name="copyright" content="智能社 - zhinengshe.com" />
-<title>智能社 - www.zhinengshe.com</title>
+<title>yangyan</title>
+<link rel="stylesheet" href="css/common.css" />
+<script src="javascripts/move.js"></script>
+<style>
+
+.box{width:100%; position:relative;left:0;top:0;height:3000px;}
+.header{width:100%; }
+/*导航*/
+.navbox{width:100%;background:#2F2F2F;}
+.header a{color:#fff;font-meight:bold;}
+.header .nav{height:70px; position:relative;;}
+.header .nav h1{position:absolute;left:0;top:0;width:120px;height:75px; z-index:10000;}
+.header .nav h1 img{display:block;}
+.header .nav ul li{float:left; border-left:1px solid #3c3b3b;}
+.header .nav ul li.active a{color:#ccc;font-meight:bold;}
+.header .nav ul li:hover a{color:#ccc;}
+.header .nav ul li.lastLi{border-right:1px solid #e8d040;}
+.header .nav ul li a{padding:0 26px; line-height:70px;}
+.header .navMini{display:none;position:fixed;top:0;left:0;height:0px;overflow:hidden; z-index:100;background:#2F2F2F; width:100%;height:60px;}
+.header .navMini ul{overflow:hidden; height:100%; padding-left:360px;}
+.header .navMini ul li{float:left; height:100%;}
+.header .navMini ul li a{padding:0 26px; line-height:60px;}
+.header .navMini ul li.active a{color:#549ec5;}
+.header .navMini ul li:hover a{color:#549ec5;}
+/*轮播图*/
+.banner { width:1349px;height:520px; overflow:hidden; position: relative;}
+.banner ol { position: absolute;left:47%; bottom: 5px; z-index: 2; }
+
+.banner ol li { float: left; margin-right: 10px; display: inline; cursor: pointer; background: #fcf2cf; border: 1px solid #f47500; padding: 2px 6px; color: #d94b01; font-family: arial; font-size: 12px; }
+.banner .active { padding: 3px 8px; font-weight: bold; color: #ffffff; background: #ffb442; position: relative; bottom: 2px; }
+
+.banner ul { position: absolute; top: 0; left: 0; z-index: 1; }
+.banner ul li {  width:1349px; float: left; }
+.banner ul img { float: left;   width:1349px;height:520px;  }
+.banner p { width: 20px; height: 20px; line-height: 20px; font-family: arial; color: #fff; text-align: center; font-weight: bold; background: #333; border: 1px solid #ccc; position: absolute; top: 50%; z-index: 2; cursor: pointer; }
+.banner .prev { left: 10px; }
+.banner .next { right: 10px; }
+/*内容*/
+.container .sevrvie{width:1349px;height:450px; overflow:hidden; position:relative;}
+.container .sevrvie .icon{width:69px;height:58px;background:url(images/huan.png); position:absolute;left:47%;bottom:0;}
+.container .sevrvie .icon1{width:11px;height:15px;background:url(images/jian.png); position:absolute;left:49.2%;bottom:0;}
+.container .sevrvie .p1{ position:absolute;left:43%;bottom:120px; font:24px/34px "华康海报体";color:#3a3635; }
+.container .sevrvie .p2{ position:absolute;left:41%;bottom:90px; font:14px/34px "华康海报体";color:#3a3635; }
+.aboutMe{width:1349px;height:768px; position:relative;}
+.aboutMe #img1{width:1349px;height:768px;}
+.aboutMe #img2{width:552px;height:368px; position:absolute;left:30%;top:20px; z-index:1; padding-bottom:60px;}
+.aboutMe.skiil_main_t{width:1000px;height:540px;margin:0 auto; position:absolute;}
+.aboutMe.skiil_main_t .l1{float:left;width:106px;height:106px; position:absolute; left:212px;bottom:240px;}
+.circle1{display:inline-block;width:120px;height:120px;transition:all 0.5s ease;width:106px;height:106px; position:absolute; left:212px;bottom:240px;}
+.circle1:hover{transform:rotate(315deg);border-radius:0%;}
+.circle1:hover a{transform:rotate(-315deg);}
+.circle1 a{display:block;color:#2c4151;font-size:22px;line-height:120px;}
+
+.aboutMe.skiil_main_t .l2{float:left;width:106px;height:106px; position:absolute; left:360px;bottom:240px;}
+.circle2{display:inline-block;width:120px;height:120px;transition:all 0.5s ease;width:106px;height:106px; position:absolute; left:360px;bottom:240px;}
+.circle2:hover{transform:rotate(315deg);border-radius:0%;}
+.circle2:hover a{transform:rotate(-315deg);}
+.circle2 a{display:block;color:#2c4151;font-size:22px;line-height:120px;}
+
+.aboutMe.skiil_main_t .l3{float:left;width:106px;height:106px; position:absolute; left:523px;bottom:240px;}
+.circle3{display:inline-block;width:120px;height:120px;transition:all 0.5s ease;width:106px;height:106px; position:absolute; left:523px;bottom:240px;}
+.circle3:hover{transform:rotate(315deg);border-radius:0%;}
+.circle3:hover a{transform:rotate(-315deg);}
+.circle3 a{display:block;color:#2c4151;font-size:22px;line-height:120px;}
+
+.aboutMe.skiil_main_t .l4{float:left;width:106px;height:106px; position:absolute; left:684px;bottom:240px;}
+.circle4{display:inline-block;width:120px;height:120px;transition:all 0.5s ease;width:106px;height:106px; position:absolute; left:684px;bottom:240px;}
+.circle4:hover{transform:rotate(315deg);border-radius:0%;}
+.circle4:hover a{transform:rotate(-315deg);}
+.circle4 a{display:block;color:#2c4151;font-size:22px;line-height:120px;}
+
+.aboutMe.skiil_main_t .l5{float:left;width:106px;height:106px; position:absolute; left:851px;bottom:240px;}
+.circle5{display:inline-block;width:120px;height:120px;transition:all 0.5s ease;width:106px;height:106px; position:absolute; left:851px;bottom:240px;}
+.circle5:hover{transform:rotate(315deg);border-radius:0%;}
+.circle5:hover a{transform:rotate(-315deg);}
+.circle5 a{display:block;color:#2c4151;font-size:22px;line-height:120px;}
+.aboutMe.skiil_main_t .l6{float:left;width:106px;height:106px; position:absolute; left:1010px;bottom:240px;}
+.circle6{display:inline-block;width:120px;height:120px;transition:all 0.5s ease;width:106px;height:106px; position:absolute; left:1010px;bottom:240px;}
+.circle6:hover{transform:rotate(315deg);border-radius:0%;}9
+.circle6:hover a{transform:rotate(-315deg);}
+.circle6 a{display:block;color:#2c4151;font-size:22px;line-height:120px;}
+.aboutMe .about_con{position:absolute;width:510px;height:270px;left:420px;bottom:-180px;color:#6F6F6F; text-indent:2em;line-height: 33px;margin: 0 auto 50px;font:18px/40px "kaiti";color:#dedede;z-index:5;}
+.about_con span{font:18px/40px "kaiti"; color:rgba(0,0,0,0); text-shadow:0 0 100px #fff; opacity:0; transition:0.4s all ease;}
+.about_con span.active{text-shadow:0 0 0 #fff; opacity:1;}
+.aboutMe #img3{width:770px;height:442px; position:absolute;left:290px;top:550px; z-index:4;}
+//.case {width:1394px;height:724px; overflow:hidden;} 
+
+/*技能一览大模块*/
+.jinengBox{width:1349px;height:724px;background:url(images/zip2.png) no-repeat; overflow:hidden;}
+.maskContact{position:relative;width:100%;height:100%;}
+#ulJnyl{width:946px;height:100%;position:absolute; left:59%;margin-left:-550px;top:186px;}
+#ulJnyl li{float:left; position:relative;width:150px; height:220px; background:rgba(255,255,255,0.3); margin:10px;text-align:center;overflow:hidden; border-radius:6px; border:1px solid #ccc; color:#fff;}
+#ulJnyl li div{width:100%;height:100%;}
+#ulJnyl li div h3{width:100%;height:50px;line-height:50px; padding-top:60px;color:#fff;font-size:30px; font-weight:normal;}
+#ulJnyl li div p{font-size:14px;line-height:26px;}
+#ulJnyl li span{ position:absolute;left:-150px;top:0;width:150px; height:220px; background:pink;font-size:30px; color:#fff;border-radius:6px;text-align:center; z-index:100;}
+#ulJnyl li span p{line-height:30px;font-size:26px; padding-top:90px;}
+/*侧边栏*/
+<!--.slide-bar{position: fixed;right: 10px;bottom: 50px;z-index: 100;}
+.bar-content a{display:block;position: relative; width: 34px;height: 36px;background:url(images/bg.png) no-repeat; background-position: -345px -339px;  margin-bottom: 4px;font-size: 12px; color: #fff; padding: 7px 8px;text-align: center;}
+.bar-content a {emdisplay: none;}
+.bar-content .bar-top{display: none;}
+.bar-content .bar-phone{background-position: -345px -410px;}
+.bar-content .bar-mail{ background-position:-279px -339px}
+.bar-content .bar-wechat{background-position: -279px -410px;}
+.bar-content .bar-hover{background: #f26d6d;text-indent:0;}
+.bar-content .bar-message{background-position:-346px -486px;}
+.bar-content .bar-qq{background-position:-279px -486px;}
+.bar-phone-hover{width: 120px; height: 48px border-radius: 4px;-webkit-border-radius: 4px -moz-border-radius: 4px;-ms-border-radius: 4px-o-border-radius: 4px background: #e3e3e0;position:absolute;top: 2px;left: -130px; z-index: 100;line-height:48pxdisplay: none;}
+.bar-phone-icon{width: 26px;height:16px;float: leftmargin: 0 4px 0 5px;}
+.bar-phone-icon img{width: 26px;height: 16px;}
+.bar-phone-text{float: left;font-size: 8px;color: #5a5a5a;}
+.bar-wechat-hover{position: absolute;z-index: 100;top:-28px;left:-122px;display:none;}
+.bar-wechat-hover img{ width:112px;height:112px;}-->
+
+</style>
+<script src="javascripts/move.js"></script>
 <script>
-function addZero(n){
-	if(n < 10){
-		return "0" + n;
-	} else {
-		return "" + n;
-	}
-}
-
-
 window.onload = function(){
-	var oText = document.getElementById("txt1");
-	var oBtn  = document.getElementById("btn1");
-	var oBtn2  = document.getElementById("btn2");
+	var oDiv = document.getElementById("nav");
+	var oDiv2 = document.getElementById("miniNav");
+	var divT = oDiv.offsetTop;
 	
-	var i = 0;
-	var timer = null;
-	//变量控制
-	var bClick = false;//默认没有被点击
-	oBtn.onclick = function(){
-		
-		if(bClick == true){//被点击了
-			return ;
+	window.onscroll = function(){
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		if(scrollTop >divT){
+			oDiv.style.position = "fixed";
+			oDiv.style.top = "0";
+			oDiv.style.display = "none";
+			oDiv2.style.display = "block";
+		} else {
+			oDiv.style.position = "";
+			oDiv.style.display = "block";
+			oDiv2.style.display = "none";
 		}
-	
-		bClick = true;
-		//clearInterval(timer);
-		timer = setInterval(function(){
-			//修改oText值
-			i++;	
-			var iM = parseInt(i/60);
-			var iS = i%60;
-			oText.value = addZero(iM) + ":" + addZero(iS);
-		},1000);	
 	};
+	var oDiv1 = document.getElementById("play");
+	var oPrev = oDiv1.children[0];
+	var oNext = oDiv1.children[1];
+	var aBtn  = oDiv1.children[2].children;
+	var oUl   = oDiv1.children[3];
+	var aLi   = oUl.children;
 	
-	//暂停
-	oBtn2.onclick = function(){
-		bClick = false;
+	var timer=setInterval(next,1000);
+	oDiv1.onmouseover = function(){
 		clearInterval(timer);
 	};
+	oDiv1.onmouseout=function(){
+	 	timer=setInterval(next,1000);
+	}
 	
- 
+	//克隆一份
+	oUl.appendChild(aLi[0].cloneNode(true));
+	
+	//设置ul宽度
+	oUl.style.width = aLi[0].offsetWidth*aLi.length + "px";
+	
+	var iNow = 0;
+	var bReady = true;
+	for(var i = 0; i < aBtn.length; i++){
+		(function(index){
+			aBtn[i].onmouseover = function(){
+				iNow = index;
+				tab();
+			};
+		})(i);
+	}
+	
+	oPrev.onclick = function(){
+		if(!bReady) return;
+		bReady = false;
+		iNow--;
+		if(iNow == -1){
+			oUl.style.left = -aLi[0].offsetWidth*3 + "px";
+			iNow =3;
+		}	
+		tab();
+	};
+		oNext.onclick =next
+		 function next(){
+		if(!bReady) return;
+		bReady = false;
+		iNow++;		
+		tab();
+	};
+	function tab(){
+		
+		for(var i = 0; i < aBtn.length; i++){
+			aBtn[i].className = "";	
+		}
+		
+		if(iNow == 3){
+			aBtn[0].className = "active";
+		} else {
+			aBtn[iNow].className = "active";
+		}
+		
+		move(oUl,{left:-aLi[0].offsetWidth*iNow},{
+			complete:function(){
+				bReady = true;				
+				//判断运动完成
+				if(iNow == 3){
+					oUl.style.left = "0";
+					iNow = 0;
+				}	
+			}	
+		});	
+	}
+	
+//自我介绍
+textShow();
+function textShow(){
+		var str = '杨艳艳，女，1994.12.09，安徽亳州人，大专学历。经过一段时间工作和学习，我更注重软件UI的设计和web前段的设计和UI的设计，并且有自己的上线作品。web前段工程师——是我最终定位的职业，这个职业更贴近我的专业和爱好；我偏好响应式开发，手机网站开发，web，UI的设计；本人自学能力强，喜欢新技术，最重要的是自我解决问题的等能力！';
+	
+		var  oAbout_con = document.getElementById("about_con");
+		
+		for(var i = 0; i < str.length; i++){
+			var oSpan = document.createElement("span");
+			oSpan.innerHTML = str[i];
+			about_con.appendChild(oSpan);
+		}
+		
+		var aSpan = about_con.children;
+		
+		var i = 0;
+		var timer = setInterval(function(){
+			
+			aSpan[i].className = "active";
+			
+			i++;
+			if(i == aSpan.length){
+				clearInterval(timer);
+			}
+},100);
+//lagou
+(function(){	
+	var oUllago = document.getElementById("ulJnyl");
+    var aLilago = oUllago.children;
+	
+	for(var i = 0; i < aLilago.length; i++){
+		lagou(aLilago[i]);
+	}
+	
+	function getDir(oEvent,obj){
+		var x1 = obj.offsetLeft + obj.offsetWidth/2;
+		var y1 = obj.offsetTop + obj.offsetHeight/2;
+		
+		var x2 = oEvent.clientX;
+		var y2 = oEvent.clientY;
+		
+		var x = x2 - x1;
+		var y = y1 - y2;		
+		// 0 左边 1 下  2 右  3 上 
+		return Math.round((Math.atan2(y,x)*180/Math.PI+180)/90)%4;	
+		return Math.round((Math.atan2(y,x)*180/Math.PI+180)/90)%4;		
+	}
+	
+	
+	function lagou(oDiv){
+	
+		oDiv.onmouseover = function(ev){
+			var oEvent = ev || event;
+			var n = getDir(oEvent,this);
+			 var oSpan = oDiv.getElementsByTagName("span")[0];
+		
+			var oFrom = oEvent.fromElement || oEvent.relatedTarget;
+			if(oDiv.contains(oFrom)){
+				return;
+			}
+			
+			switch(n){
+				case 0://左边
+					oSpan.style.left = "-150px";
+					oSpan.style.top = "0";
+					break;
+				case 1://下边
+					oSpan.style.left = "0";
+					oSpan.style.top = "220px";
+					break;
+				case 2://右边
+					oSpan.style.left = "150px";
+					oSpan.style.top = "0";
+					break;
+				case 3://上边
+					oSpan.style.left = "0";
+					oSpan.style.top = "-220px";
+					break;
+			}
+			move(oSpan,{left:0,top:0});
+		};
+			
+		oDiv.onmouseout = function(ev){
+			var oEvent = ev || event;
+			var n = getDir(oEvent,this);
+			var oSpan = oDiv.getElementsByTagName("span")[0];
+			
+			var oTo = oEvent.toElement || oEvent.relatedTarget;
+			if(oDiv.contains(oTo)){
+				return;
+			}
+			
+			switch(n){
+				case 0://左边 
+					move(oSpan,{left:-150,top:0});
+					break;
+				case 1://下边 
+					move(oSpan,{left:0,top:220});
+					break;
+				case 2://右边 
+					move(oSpan,{left:150,top:0});
+					break;
+				case 3://上边 
+					move(oSpan,{left:0,top:-220});
+					break;
+			} 
+		};
+	}
+})();
+
+	
 };
+
+	
+
+}
+
 </script>
+
 </head>
 
 <body>
+<div class="box" id="box">
+	<!--头部开始-->
+    <div class="header" id="header">
+        <div class="navbox">
+            <div class="nav comWidth clearfix" id="nav">
+              <h1><img src="images/logo.png"></h1>
+                 <ul class="fr">
+                        <li class="active"><a href="#a">Home</a></li>
+                        <li><a href="#a1">About</a></li>
+                        <li><a href="#a2">Work</a></li>
+                        <li><a href="#a3">Contact</a></li>
+                 </ul>
+            </div>
+             <div class="navMini" id="miniNav">
+                        <div  class="comWidth">
+                            <ul>
+                                <li><a href="#a">Home</a></li>
+                                <li><a href="#a1">About</a></li>
+                                <li><a href="#a2">Work</a></li>
+                                <li><a href="#a3">Contact</a></li>
+                            </ul>
+                        </div>
+             </div>
+        </div>
+   	</div>
+    <!--banner-->
+    <a name="a"></a>
+    <div class="banner" id="play">
+        <p class="prev">&lt;</p>
+        <p class="next">&gt;</p>
+        <ol>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ol>
+        <ul>
+            <li><a href="javascript:;"><img src="images/banner1-01.png"alt="广告一" /></a></li>
+            <li><a href="javascript:;"><img src="images/banner1-02-01.png" alt="广告一" /></a></li>
+            <li><a href="javascript:;"><img src="images/banner1-02-03.png"alt="广告二"/></a></li>
+      
+        </ul>
+    </div>
+     <!--内容-->
+     
+     <div class="container" id="container">
+     	<a name="a1"></a>
+     	<div class="sevrvie" id="sevrive">
+        	<img src="images/3.png"/>
+            <i class="icon"></i>
+            <i class="icon1"></i>
+            <p class="p1">我能为你做些什么？</p>
+            <p class="p2">您需要我能为您做什么，我们可以聊一聊。</p>
+        </div> 
+     </div>
+     <!--关于我-->
+     <div class="aboutMe" id="aboutMe">
+     	<img src="images/bg1.png" id="img1"alt="bg"/>
+        <img src="images/tup.png"  id="img2"alt="bg"/>
+     	<ul class="skiil_main_t">
+         	<li class="l1">
+        	 	<div class="circle1"><a href="#"><img src="images/Dw.png"/></a></div>
+            </li>
+            <li class="l2">
+        		<div class="circle2"><a href="#"><img src="images/h5.png"/></a></div>
+            </li>
+             <li class="l3">
+        	 	<div class="circle3"><a href="#"><img src="images/php.png"/></a></div>
+            </li>
+             <li class="l4">
+        		<div class="circle4"><a href="#"><img src="images/css.png"/></a></div>
+            </li>
+             <li class="l5">
+        		 <div class="circle5"><a href="#"><img src="images/ai.png"/></a></div>
+            </li>
+            <li class="l6">
+        		 <div class="circle6"><a href="#"><img src="images/js.png"/></a></div>
+            </li>
+        </ul>
+         <img src="images/zip1.png" id="img3"alt="tup"/>
+         <div id="about_con" class="about_con">
+         </div>
+     </div>
+     <div class="anli" id="anli">
+     	<img src="images/anli.png"/>
+     </div>
+   <!--  //lagou-->
+   <a name="a2"></a>
+   <div class="jinengBox clientH">
+                <div class="maskContact">
+                  <ul id="ulJnyl" class="clearfix">
+                      <li class="li1">
+                        <div>
+                            <h3>苹果首页</h3>
+                            <p><br>能处理各种兼容问题</p>
+                        </div>
+                        <a href="pingguo.html"><span><p>苹果首页<br>js+html</p></span></a>
+                      </li>
+                      <li class="li2">
+                        <div>
+                            <h3>分布运动</h3>
+                            <p><br>灵活运用相关知识点</p>
+                        </div>
+                         <a href="fenbuyongd.html"><span><p>分布运动<br>js精通</p></span></a>
+                      </li>
+                      <li class="li3">
+                        <div>
+                            <h3>点击切换</h3>
+                            <p><br>熟练的与css3配合/p>
+                        </div>
+                       <a href="guanwang.html"><span><p>点击切换<br>Jquery精通</p></span></a>
+                      <li class="li4">
+                        <div>
+                            <h3>圆运动</h3>
+                            <p><br>熟练运用Html5</p>
+                        </div>
+                        <a href="yuan.html"><span><p>圆运动<br>熟练</p></span></a>
+                       </li>
+                      <li class="li5">
+                        <div>
+                            <h3>官网分布</h3>
+                            <p><br>配合js写出炫酷动画</p>
+                        </div>
+                        <a href="guanwangfenbu.html"><span><p>官网分布<br>精通</p></span></a>
+                      </li>
+                      <li class="li6">
+                        <div>
+                            <h3>高级运动</h3>
+                            <p><br>熟悉响应式布局</p>
+                        </div>
+                        <a href="gaojiyongdcaidan.html"><span><p><br>高级运动</p></span></a>
+                       </li>
+                      <li class="li7">
+                        <div>
+                            <h3>弹性运动</h3>
+                            <p><br>熟练运动</p>
+                        </div>
+                        <a  href="tanxinyund.html"><span><p>弹性运动<br>熟练使用</p></span></a>
+                       </li>
+                      <li class="li8">
+                        <div>
+                            <h3>拖拽碰撞</h3>
+                            <p><br>掌握模块化管理代码</p>
+                        </div>
+                      <a href="tuozhuai.html"><span><p>拖拽碰撞<br>熟练</p></span></a>
+                      </li>
+                      <li class="li9">
+                      <div>
+                            <h3>瀑布流</h3>
+                            <p><br>熟悉git工作流程</p>
+                        </div>
+                      <a href="pubu.html"><span><p>瀑布流<br>熟悉运用</p></span></a>
+                      </li>
+                      <li class="li10">
+                        <div>
+                            <h3>照片墙</h3>
+                            <p><br>拖拽换位置</p>
+                        </div>
+                     <a href="zhaop.html"><span><p>照片墙<br>PHP基础</p></span></a>
+                      </li>
+                </ul>	
+              </div>
+        </div>
+    <!--侧边栏-->
+     <!--   <div class="slide-bar" id="cebianlan">
+       		<div class="bar-content">
+                <a href="javascript:;" class="bar-top"></a>
+                <a href="javascript:;" class="bar-phone">
+                    <em>电话联系</em>
+                    <div class="bar-phone-hover clearfix">
+                        <span class="bar-phone-icon"></span>
+                        <span class="bar-phone-text">15026963356</span>
+                    </div>
+                </a>
+                <a href="javascript:;" class="bar-wechat">
+                    <em>微信联系</em>
+                    <div class="bar-wechat-hover"><img src="images/weix.png"></div>
+                </a>
+                <a href="javascript:;" class="bar-message">
+                    <em>邮箱地址</em>
+                </a>  
+                </div>
+       	 </div>-->
+         <div>
+         <a name="a3"></a>
+         <img src="images/foot.png"/>
+         </div>
 
-<input id="txt1" type="text" value="00:00" />
-<input id="btn1" type="button" value="计时" />
-<input id="btn2" type="button" value="暂停" />
-
-</body>
+</div>
+</body>    
 </html>
